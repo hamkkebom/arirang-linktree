@@ -12,28 +12,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink:        #0F0E0C;
-      --ink-soft:   #3D3A35;
-      --ink-muted:  #7A7570;
-      --cream:      #F5F0E8;
-      --cream-deep: #EBE4D8;
-      --white:      #FDFCFA;
-      --red:        #C23B2E;
-      --red-glow:   #E8503F;
-      --navy:       #1A3550;
-      --navy-light: #2C5A82;
-      --gold:       #B8963E;
-      --gold-soft:  #D4BA70;
-      --border:     #D5CEC3;
-
+      --dancheong-red:     #C23C2B;
+      --dancheong-blue:    #1E5B8A;
+      --dancheong-yellow:  #E3A829;
+      --dancheong-green:   #2D7B56;
+      --dancheong-white:   #F4EDE0;
+      --ink:         #1C1712;
+      --ink-soft:    #3B352D;
+      --ink-muted:   #7A7269;
+      --cream:       #F8F3EA;
+      --cream-deep:  #EDE6D8;
+      --gold:        #C9A043;
+      --gold-soft:   #DABB6A;
+      --border:      #D6CDBF;
       --serif:  'Noto Serif KR', 'Batang', Georgia, serif;
       --sans:   'Noto Sans KR', -apple-system, sans-serif;
     }
-
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--sans);
       background: var(--cream);
@@ -42,9 +38,35 @@
       overflow-x: hidden;
     }
 
-    /* ==========================================
-       히어로 섹션 — 포스터급 임팩트
-       ========================================== */
+    /* 단청 장식 띠 — 상단 */
+    .dancheong-band {
+      width: 100%;
+      height: 12px;
+      background: linear-gradient(to right,
+        var(--dancheong-red) 0%, var(--dancheong-red) 20%,
+        var(--dancheong-yellow) 20%, var(--dancheong-yellow) 30%,
+        var(--dancheong-green) 30%, var(--dancheong-green) 50%,
+        var(--dancheong-blue) 50%, var(--dancheong-blue) 70%,
+        var(--dancheong-yellow) 70%, var(--dancheong-yellow) 80%,
+        var(--dancheong-red) 80%, var(--dancheong-red) 100%
+      );
+      position: relative;
+    }
+    .dancheong-band::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0; right: 0;
+      height: 3px;
+      background: repeating-linear-gradient(90deg,
+        var(--dancheong-red) 0px, var(--dancheong-red) 8px,
+        var(--dancheong-white) 8px, var(--dancheong-white) 10px,
+        var(--dancheong-blue) 10px, var(--dancheong-blue) 18px,
+        var(--dancheong-white) 18px, var(--dancheong-white) 20px
+      );
+    }
+
+    /* 히어로 */
     .hero {
       position: relative;
       min-height: 100svh;
@@ -52,230 +74,221 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 60px 24px 48px;
-      background: var(--navy);
-      color: var(--cream);
-      overflow: hidden;
+      padding: 80px 24px 56px;
+      background: var(--dancheong-white);
       text-align: center;
+      overflow: hidden;
     }
-
-    /* 배경 — 전통 격자문양 대담하게 */
+    /* 꽃살문 격자 패턴 */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 58px,
-          rgba(255,255,255,0.04) 58px,
-          rgba(255,255,255,0.04) 60px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 58px,
-          rgba(255,255,255,0.04) 58px,
-          rgba(255,255,255,0.04) 60px
-        );
+        radial-gradient(circle at center, rgba(194,60,43,0.04) 1px, transparent 1px),
+        linear-gradient(0deg, transparent 49.5%, rgba(194,60,43,0.03) 49.5%, rgba(194,60,43,0.03) 50.5%, transparent 50.5%),
+        linear-gradient(90deg, transparent 49.5%, rgba(194,60,43,0.03) 49.5%, rgba(194,60,43,0.03) 50.5%, transparent 50.5%);
+      background-size: 40px 40px;
       pointer-events: none;
     }
-
-    /* 배경 — 대형 원형 글로우 */
+    /* 좌측 단청 세로선 */
     .hero::after {
       content: '';
       position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(194,59,46,0.12) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
+      top: 0; bottom: 0; left: 16px;
+      width: 4px;
+      background: repeating-linear-gradient(180deg,
+        var(--dancheong-red) 0px, var(--dancheong-red) 20px,
+        var(--dancheong-white) 20px, var(--dancheong-white) 24px,
+        var(--dancheong-blue) 24px, var(--dancheong-blue) 44px,
+        var(--dancheong-white) 44px, var(--dancheong-white) 48px,
+        var(--dancheong-green) 48px, var(--dancheong-green) 68px,
+        var(--dancheong-white) 68px, var(--dancheong-white) 72px
+      );
+      opacity: 0.35;
     }
-
+    .hero-right-line {
+      position: absolute;
+      top: 0; bottom: 0; right: 16px;
+      width: 4px;
+      background: repeating-linear-gradient(180deg,
+        var(--dancheong-blue) 0px, var(--dancheong-blue) 20px,
+        var(--dancheong-white) 20px, var(--dancheong-white) 24px,
+        var(--dancheong-red) 24px, var(--dancheong-red) 44px,
+        var(--dancheong-white) 44px, var(--dancheong-white) 48px,
+        var(--dancheong-green) 48px, var(--dancheong-green) 68px,
+        var(--dancheong-white) 68px, var(--dancheong-white) 72px
+      );
+      opacity: 0.35;
+      z-index: 0;
+    }
     .hero__content {
       position: relative;
       z-index: 1;
-      max-width: 480px;
+      max-width: 440px;
       width: 100%;
     }
-
-    /* 무료전시 뱃지 */
     .hero__badge {
       display: inline-block;
       font-family: var(--sans);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.15em;
-      color: var(--gold-soft);
-      border: 1px solid var(--gold-soft);
-      padding: 5px 18px;
-      margin-bottom: 32px;
+      color: var(--dancheong-red);
+      border: 1.5px solid var(--dancheong-red);
+      padding: 5px 20px;
+      margin-bottom: 28px;
       animation: fadeIn 0.8s ease both;
     }
-
-    /* 전시명 — 포스터 메인 카피 */
+    .hero__lotus {
+      margin-bottom: 20px;
+      animation: fadeIn 0.8s ease 0.1s both;
+    }
     .hero__title {
       font-family: var(--serif);
       font-weight: 900;
-      font-size: clamp(32px, 8vw, 48px);
-      line-height: 1.35;
-      letter-spacing: -0.03em;
-      color: var(--cream);
+      font-size: clamp(30px, 8vw, 44px);
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      color: var(--ink);
       margin-bottom: 20px;
       word-break: keep-all;
       animation: titleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
     }
-
     .hero__title em {
       font-style: normal;
-      color: var(--gold-soft);
+      color: var(--dancheong-red);
     }
-
-    /* 장식 라인 */
-    .hero__line {
-      width: 48px;
-      height: 2px;
-      background: var(--gold);
+    .hero__divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 0 auto 20px;
-      animation: fadeIn 0.8s ease 0.5s both;
+      width: 120px;
+      height: 6px;
+      animation: fadeIn 0.8s ease 0.4s both;
     }
-
+    .hero__divider span { flex: 1; height: 100%; }
+    .hero__divider span:nth-child(1) { background: var(--dancheong-green); }
+    .hero__divider span:nth-child(2) { background: var(--dancheong-red); }
+    .hero__divider span:nth-child(3) { background: var(--dancheong-yellow); }
+    .hero__divider span:nth-child(4) { background: var(--dancheong-blue); }
+    .hero__divider span:nth-child(5) { background: var(--dancheong-green); }
     .hero__subtitle {
       font-family: var(--sans);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
-      letter-spacing: 0.08em;
-      color: rgba(245,240,232,0.7);
+      letter-spacing: 0.1em;
+      color: var(--dancheong-blue);
       margin-bottom: 12px;
-      animation: fadeSlideUp 0.7s ease 0.6s both;
+      animation: fadeSlideUp 0.7s ease 0.5s both;
     }
-
     .hero__desc {
       font-family: var(--serif);
       font-size: 14px;
       font-weight: 400;
-      color: rgba(245,240,232,0.55);
+      color: var(--ink-muted);
       line-height: 1.8;
-      margin-bottom: 36px;
-      animation: fadeSlideUp 0.7s ease 0.7s both;
+      margin-bottom: 32px;
+      animation: fadeSlideUp 0.7s ease 0.6s both;
     }
-
-    /* 전시 정보 박스 */
     .hero__info {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.6);
+      border: 1.5px solid var(--border);
+      border-top: 3px solid var(--dancheong-red);
+      border-bottom: 3px solid var(--dancheong-blue);
       padding: 20px 24px;
       width: 100%;
-      max-width: 360px;
-      margin: 0 auto 24px;
-      animation: fadeSlideUp 0.7s ease 0.8s both;
+      max-width: 340px;
+      margin: 0 auto 20px;
+      animation: fadeSlideUp 0.7s ease 0.7s both;
     }
-
     .hero__info-row {
       display: flex;
       gap: 12px;
       font-size: 13px;
       line-height: 1.65;
-      color: rgba(245,240,232,0.75);
+      color: var(--ink-soft);
     }
-
     .hero__info-row + .hero__info-row {
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
     }
-
     .hero__info-label {
       font-weight: 700;
-      color: var(--gold-soft);
+      color: var(--dancheong-red);
       white-space: nowrap;
       min-width: 28px;
       font-size: 11px;
       letter-spacing: 0.06em;
     }
-
-    /* 인스타그램 안내 */
     .hero__instagram {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-size: 12px;
-      color: rgba(245,240,232,0.5);
-      margin-top: 4px;
-      animation: fadeSlideUp 0.7s ease 0.9s both;
+      color: var(--ink-muted);
+      animation: fadeSlideUp 0.7s ease 0.8s both;
     }
-
-    .hero__instagram svg {
-      width: 14px;
-      height: 14px;
-      opacity: 0.6;
-    }
-
-    /* 스크롤 힌트 */
+    .hero__instagram svg { width: 14px; height: 14px; color: var(--ink-muted); }
     .hero__scroll {
       position: absolute;
-      bottom: 24px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: rgba(245,240,232,0.3);
-      font-size: 10px;
-      letter-spacing: 0.1em;
       animation: fadeIn 1s ease 1.2s both;
     }
-
     .hero__scroll-dot {
       width: 1px;
-      height: 24px;
-      background: linear-gradient(to bottom, rgba(245,240,232,0.3), transparent);
+      height: 20px;
+      background: linear-gradient(to bottom, var(--dancheong-red), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
+      opacity: 0.4;
     }
-
     @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 0.6; transform: scaleY(1.2); }
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
     }
 
-    /* ==========================================
-       링크 섹션
-       ========================================== */
+    /* 단청 디바이더 */
+    .dancheong-divider {
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      justify-content: center;
+    }
+    .dancheong-divider__inner {
+      width: 100%;
+      max-width: 460px;
+      height: 24px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .dancheong-divider__center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      background: var(--cream);
+      padding: 0 12px;
+    }
+    .dancheong-divider__line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--dancheong-red) 20%, var(--dancheong-yellow) 40%, var(--dancheong-green) 60%, var(--dancheong-blue) 80%, transparent);
+      opacity: 0.4;
+    }
+
+    /* 링크 섹션 */
     .links-section {
-      padding: 48px 24px;
+      padding: 36px 24px 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
-    /* 섹션 장식 — 전통 문양 디바이더 */
-    .section-ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 36px;
-      width: 100%;
-      max-width: 460px;
-    }
-
-    .section-ornament__line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--border), transparent);
-    }
-
-    .section-ornament__icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* 링크 버튼 영역 */
     .links {
       width: 100%;
       max-width: 460px;
@@ -283,16 +296,15 @@
       flex-direction: column;
       gap: 10px;
     }
-
     .link-btn {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       width: 100%;
-      padding: 18px 22px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--navy);
+      padding: 17px 20px;
+      background: rgba(255,255,255,0.7);
+      border: 1.5px solid var(--border);
+      border-left: 4px solid var(--dancheong-red);
       text-decoration: none;
       color: var(--ink);
       font-family: var(--sans);
@@ -300,218 +312,135 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      position: relative;
     }
-
+    .link-btn:nth-child(2) { border-left-color: var(--dancheong-blue); }
+    .link-btn:nth-child(3) { border-left-color: var(--dancheong-green); }
+    .link-btn:nth-child(4) { border-left-color: var(--dancheong-yellow); }
     .link-btn:hover {
-      border-left-color: var(--red);
-      background: var(--cream);
+      background: #fff;
       transform: translateX(4px);
-      box-shadow: -4px 2px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
-
-    .link-btn__icon {
-      font-size: 22px;
-      flex-shrink: 0;
-      width: 32px;
-      text-align: center;
-    }
-
-    .link-btn__text {
-      flex: 1;
-      letter-spacing: -0.01em;
-    }
-
+    .link-btn__icon { font-size: 20px; flex-shrink: 0; width: 28px; text-align: center; }
+    .link-btn__text { flex: 1; }
     .link-btn__arrow {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--ink-muted);
       transition: transform 0.3s ease, color 0.3s ease;
-      font-weight: 300;
     }
-
-    .link-btn:hover .link-btn__arrow {
-      transform: translateX(4px);
-      color: var(--red);
-    }
-
-    /* 스태거드 애니메이션 */
+    .link-btn:hover .link-btn__arrow { transform: translateX(4px); color: var(--dancheong-red); }
+    .link-btn:nth-child(2):hover .link-btn__arrow { color: var(--dancheong-blue); }
+    .link-btn:nth-child(3):hover .link-btn__arrow { color: var(--dancheong-green); }
+    .link-btn:nth-child(4):hover .link-btn__arrow { color: var(--dancheong-yellow); }
     .link-btn { opacity: 0; animation: fadeSlideUp 0.5s ease both; }
     .link-btn:nth-child(1) { animation-delay: 0.1s; }
     .link-btn:nth-child(2) { animation-delay: 0.18s; }
     .link-btn:nth-child(3) { animation-delay: 0.26s; }
     .link-btn:nth-child(4) { animation-delay: 0.34s; }
 
-    /* ==========================================
-       QR 코드 섹션
-       ========================================== */
+    /* QR */
     .qr-section {
-      padding: 40px 24px 48px;
+      padding: 32px 24px 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
-
     .qr-label {
       font-family: var(--sans);
       font-size: 12px;
       font-weight: 500;
       color: var(--ink-muted);
       letter-spacing: 0.08em;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
-
     .qr-placeholder {
-      width: 140px;
-      height: 140px;
+      width: 130px; height: 130px;
       border: 2px dashed var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--white);
-      position: relative;
+      background: rgba(255,255,255,0.6);
     }
+    .qr-placeholder__inner { font-size: 11px; color: var(--ink-muted); text-align: center; line-height: 1.5; }
+    .qr-placeholder img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .qr-caption { font-size: 11px; color: var(--ink-muted); margin-top: 8px; }
 
-    .qr-placeholder__inner {
-      font-size: 11px;
-      color: var(--ink-muted);
-      text-align: center;
-      line-height: 1.5;
-    }
-
-    /* QR 이미지가 들어갈 때: .qr-placeholder img { width:100%; height:100%; object-fit:contain; } */
-    .qr-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .qr-caption {
-      font-size: 11px;
-      color: var(--ink-muted);
-      margin-top: 10px;
-    }
-
-    /* ==========================================
-       푸터
-       ========================================== */
+    /* 푸터 */
     .footer {
-      padding: 32px 24px 40px;
+      padding: 28px 24px 20px;
       text-align: center;
-      border-top: 1px solid var(--border);
       width: 100%;
       background: var(--cream-deep);
+      border-top: 1px solid var(--border);
     }
-
-    .footer__social {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
+    .footer__social { display: flex; justify-content: center; gap: 14px; margin-bottom: 16px; }
     .footer__social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
       border: 1px solid var(--border);
       border-radius: 50%;
       text-decoration: none;
       color: var(--ink-muted);
       transition: all 0.3s ease;
     }
-
-    .footer__social-link:hover {
-      border-color: var(--navy);
-      color: var(--navy);
-      transform: translateY(-2px);
+    .footer__social-link:hover { border-color: var(--dancheong-blue); color: var(--dancheong-blue); transform: translateY(-2px); }
+    .footer__orgs { font-family: var(--serif); font-size: 13px; font-weight: 700; color: var(--ink-soft); margin-bottom: 6px; }
+    .footer__orgs span { color: var(--ink-muted); font-weight: 400; margin: 0 4px; }
+    .footer__copyright { font-size: 10px; color: var(--ink-muted); line-height: 1.5; }
+    .dancheong-band--bottom {
+      width: 100%; height: 8px;
+      background: linear-gradient(to right,
+        var(--dancheong-blue) 0%, var(--dancheong-blue) 20%,
+        var(--dancheong-yellow) 20%, var(--dancheong-yellow) 30%,
+        var(--dancheong-red) 30%, var(--dancheong-red) 50%,
+        var(--dancheong-green) 50%, var(--dancheong-green) 70%,
+        var(--dancheong-yellow) 70%, var(--dancheong-yellow) 80%,
+        var(--dancheong-blue) 80%, var(--dancheong-blue) 100%
+      );
     }
 
-    .footer__orgs {
-      font-family: var(--serif);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink-soft);
-      letter-spacing: 0.02em;
-      margin-bottom: 8px;
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes titleReveal { from { opacity: 0; transform: translateY(24px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-    .footer__orgs span {
-      color: var(--ink-muted);
-      font-weight: 400;
-      margin: 0 6px;
-    }
-
-    .footer__copyright {
-      font-size: 11px;
-      color: var(--ink-muted);
-      line-height: 1.6;
-    }
-
-    /* ==========================================
-       애니메이션
-       ========================================== */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes titleReveal {
-      from { opacity: 0; transform: translateY(30px) scale(0.97); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    /* ==========================================
-       반응형
-       ========================================== */
     @media (min-width: 520px) {
-      .hero { padding: 80px 32px 56px; }
-      .links-section { padding: 56px 32px; }
+      .hero { padding: 80px 40px 56px; }
+      .hero::after { left: 24px; }
+      .hero-right-line { right: 24px; }
     }
-
     @media (max-width: 380px) {
-      .hero { padding: 48px 20px 40px; }
-      .hero__badge { font-size: 10px; padding: 4px 14px; }
+      .hero { padding: 60px 20px 44px; }
+      .hero__badge { font-size: 10px; }
       .hero__info { padding: 16px 18px; }
-      .link-btn { padding: 15px 18px; font-size: 14px; }
-      .qr-placeholder { width: 120px; height: 120px; }
+      .link-btn { padding: 14px 16px; font-size: 14px; }
+      .hero::after { left: 10px; }
+      .hero-right-line { right: 10px; }
+      .qr-placeholder { width: 110px; height: 110px; }
     }
   </style>
 </head>
 <body>
+  <div class="dancheong-band" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       히어로 — 전시 포스터 메인 비주얼
-       ============================================================ -->
   <section class="hero">
+    <div class="hero-right-line" aria-hidden="true"></div>
     <div class="hero__content">
-
       <div class="hero__badge">무료 전시</div>
-
-      <h1 class="hero__title">
-        <em>아리랑,</em><br>
-        130년 전<br>
-        한국의 보물을 찾다
-      </h1>
-
-      <div class="hero__line"></div>
-
+      <div class="hero__lotus" aria-hidden="true">
+        <svg width="48" height="28" viewBox="0 0 48 28" fill="none">
+          <ellipse cx="24" cy="16" rx="5" ry="12" fill="none" stroke="#C23C2B" stroke-width="1" opacity="0.5"/>
+          <ellipse cx="24" cy="16" rx="5" ry="12" fill="none" stroke="#1E5B8A" stroke-width="1" opacity="0.4" transform="rotate(-30 24 16)"/>
+          <ellipse cx="24" cy="16" rx="5" ry="12" fill="none" stroke="#1E5B8A" stroke-width="1" opacity="0.4" transform="rotate(30 24 16)"/>
+          <ellipse cx="24" cy="16" rx="5" ry="12" fill="none" stroke="#2D7B56" stroke-width="0.8" opacity="0.3" transform="rotate(-60 24 16)"/>
+          <ellipse cx="24" cy="16" rx="5" ry="12" fill="none" stroke="#2D7B56" stroke-width="0.8" opacity="0.3" transform="rotate(60 24 16)"/>
+          <circle cx="24" cy="16" r="2.5" fill="#E3A829" opacity="0.5"/>
+        </svg>
+      </div>
+      <h1 class="hero__title"><em>아리랑,</em><br>130년 전<br>한국의 보물을 찾다</h1>
+      <div class="hero__divider" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <p class="hero__subtitle">헐버트가 시작한 K-컬쳐</p>
-
-      <p class="hero__desc">
-        헐버트의 저서와 유품으로 만나는<br>
-        아리랑 이야기
-      </p>
-
-      <!-- 전시 정보 -->
+      <p class="hero__desc">헐버트의 저서와 유품으로 만나는<br>아리랑 이야기</p>
       <div class="hero__info">
         <div class="hero__info-row">
           <span class="hero__info-label">기간</span>
@@ -522,113 +451,41 @@
           <span>(주)함께봄 본사 한옥<br>서울 종로구 효자로 7길 10</span>
         </div>
       </div>
-
-      <!-- 인스타그램 안내 -->
       <p class="hero__instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5"/>
-          <circle cx="12" cy="12" r="5"/>
-          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
         전시 관련 상세 행사 일정은 인스타그램으로 안내
       </p>
-
     </div>
-
-    <div class="hero__scroll">
-      <span class="hero__scroll-dot"></span>
-    </div>
+    <div class="hero__scroll" aria-hidden="true"><span class="hero__scroll-dot"></span></div>
   </section>
 
-  <!-- ============================================================
-       링크 섹션
-       ============================================================ -->
+  <div class="dancheong-divider" aria-hidden="true"><div class="dancheong-divider__inner"><div class="dancheong-divider__line"></div><div class="dancheong-divider__center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 L22 12 L12 22 L2 12 Z" stroke="#C23C2B" stroke-width="1.2" fill="none"/><path d="M12 6 L18 12 L12 18 L6 12 Z" stroke="#1E5B8A" stroke-width="0.8" fill="none"/><circle cx="12" cy="12" r="2" fill="#E3A829" opacity="0.6"/></svg></div><div class="dancheong-divider__line"></div></div></div>
+
   <section class="links-section">
-
-    <!-- 전통 문양 디바이더 -->
-    <div class="section-ornament">
-      <div class="section-ornament__line"></div>
-      <svg class="section-ornament__icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-        <path d="M12 2 L22 12 L12 22 L2 12 Z" stroke="#B8963E" fill="none"/>
-        <path d="M12 6 L18 12 L12 18 L6 12 Z" stroke="#B8963E" opacity="0.4" fill="none"/>
-      </svg>
-      <div class="section-ornament__line"></div>
-    </div>
-
     <nav class="links" aria-label="전시 관련 링크">
-
-      <!-- 링크 URL은 href="#"을 실제 URL로 교체하세요 -->
-
-      <a href="#" class="link-btn" target="_blank" rel="noopener">
-        <span class="link-btn__icon">❤️‍🔥</span>
-        <span class="link-btn__text">기금모금 안내</span>
-        <span class="link-btn__arrow">→</span>
-      </a>
-
-      <a href="#" class="link-btn" target="_blank" rel="noopener">
-        <span class="link-btn__icon">🏛️</span>
-        <span class="link-btn__text">전시 홈페이지</span>
-        <span class="link-btn__arrow">→</span>
-      </a>
-
-      <a href="#" class="link-btn" target="_blank" rel="noopener">
-        <span class="link-btn__icon">📋</span>
-        <span class="link-btn__text">공모전 안내</span>
-        <span class="link-btn__arrow">→</span>
-      </a>
-
-      <a href="#" class="link-btn" target="_blank" rel="noopener">
-        <span class="link-btn__icon">💌</span>
-        <span class="link-btn__text">문의하기</span>
-        <span class="link-btn__arrow">→</span>
-      </a>
-
-      <!--
-        추가 링크:
-        <a href="https://..." class="link-btn" target="_blank" rel="noopener">
-          <span class="link-btn__icon">🎵</span>
-          <span class="link-btn__text">아리랑 음원 듣기</span>
-          <span class="link-btn__arrow">→</span>
-        </a>
-      -->
+      <a href="#" class="link-btn" target="_blank" rel="noopener"><span class="link-btn__icon">❤️‍🔥</span><span class="link-btn__text">기금모금 안내</span><span class="link-btn__arrow">→</span></a>
+      <a href="#" class="link-btn" target="_blank" rel="noopener"><span class="link-btn__icon">🏛️</span><span class="link-btn__text">전시 홈페이지</span><span class="link-btn__arrow">→</span></a>
+      <a href="#" class="link-btn" target="_blank" rel="noopener"><span class="link-btn__icon">📋</span><span class="link-btn__text">공모전 안내</span><span class="link-btn__arrow">→</span></a>
+      <a href="#" class="link-btn" target="_blank" rel="noopener"><span class="link-btn__icon">💌</span><span class="link-btn__text">문의하기</span><span class="link-btn__arrow">→</span></a>
     </nav>
   </section>
 
-  <!-- ============================================================
-       QR 코드 섹션
-       ============================================================ -->
+  <div class="dancheong-divider" aria-hidden="true"><div class="dancheong-divider__inner"><div class="dancheong-divider__line"></div><div class="dancheong-divider__center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 L22 12 L12 22 L2 12 Z" stroke="#2D7B56" stroke-width="1.2" fill="none"/><path d="M12 6 L18 12 L12 18 L6 12 Z" stroke="#C23C2B" stroke-width="0.8" fill="none"/><circle cx="12" cy="12" r="2" fill="#E3A829" opacity="0.6"/></svg></div><div class="dancheong-divider__line"></div></div></div>
+
   <section class="qr-section">
     <p class="qr-label">전시 관련 QR</p>
-    <div class="qr-placeholder">
-      <!-- 실제 QR 이미지로 교체: <img src="qr.png" alt="전시 QR 코드"> -->
-      <span class="qr-placeholder__inner">QR 코드<br>이미지 삽입</span>
-    </div>
+    <div class="qr-placeholder"><span class="qr-placeholder__inner">QR 코드<br>이미지 삽입</span></div>
     <p class="qr-caption">카메라로 스캔해주세요</p>
   </section>
 
-  <!-- ============================================================
-       푸터
-       ============================================================ -->
   <footer class="footer">
     <div class="footer__social">
-      <a href="#" class="footer__social-link" aria-label="인스타그램" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5"/>
-          <circle cx="12" cy="12" r="5"/>
-          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
-        </svg>
-      </a>
-      <a href="#" class="footer__social-link" aria-label="유튜브" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.9 31.9 0 0 0 0 12a31.9 31.9 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.9 31.9 0 0 0 24 12a31.9 31.9 0 0 0-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/>
-        </svg>
-      </a>
+      <a href="#" class="footer__social-link" aria-label="인스타그램" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" class="footer__social-link" aria-label="유튜브" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.9 31.9 0 0 0 0 12a31.9 31.9 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.9 31.9 0 0 0 24 12a31.9 31.9 0 0 0-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
     </div>
     <p class="footer__orgs">헐버트박사기념사업회 <span>·</span> 함께봄</p>
-    <p class="footer__copyright">
-      © 2026 아리랑, 130년 전 한국의 보물을 찾다
-    </p>
+    <p class="footer__copyright">© 2026 아리랑, 130년 전 한국의 보물을 찾다</p>
   </footer>
-
+  <div class="dancheong-band--bottom" aria-hidden="true"></div>
 </body>
 </html>
